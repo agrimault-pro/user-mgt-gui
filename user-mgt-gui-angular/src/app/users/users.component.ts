@@ -8,8 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class UsersComponent implements OnInit {
 
   #Decorator
-  @Input() userName : String;
+  @Input() userFirstName : String;
   @Input() userLastName : String;
+  @Input() userRole : String;
 
   constructor() { }
 
@@ -18,5 +19,17 @@ export class UsersComponent implements OnInit {
 
   getLastName() {
     return this.userLastName;
+  }
+
+  isUserAnAdmin() {
+    return this.userRole === 'Admin';
+  }
+
+  getColorForAdmin() {
+    if(this.userRole === 'Admin') {
+      return 'red';
+    } else if (this.userRole === 'Reader') {
+      return 'green';
+    }
   }
 }

@@ -8,17 +8,38 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isAuth = false;
 
-  user1 = 'Tom1';
-  user2 = 'Tom2';
-  user3 = 'Tom3';
-  user4 = 'Tom4';
-  user5 = 'Tom5';
-
-  userLastName1 = 'Cruise1';
-  userLastName2 = 'Cruise2';
-  userLastName3 = 'Cruise3';
-  userLastName4 = 'Cruise4';
-  userLastName5 = 'Cruise5';
+  users = [
+    {
+      firstName : 'Tom1',
+      lastName : 'Cruise1',
+      role : 'Reader'
+    },
+    {
+      firstName : 'Tom2',
+      lastName : 'Cruise2',
+      role : 'Reader'
+    },
+    {
+      firstName : 'Tom3',
+      lastName : 'Cruise3',
+      role : 'Admin'
+    },
+    {
+      firstName : 'Tom4',
+      lastName : 'Cruise4',
+      role : 'Reader'
+    },
+    {
+      firstName : 'Tom5',
+      lastName : 'Cruise5',
+      role : 'Admin'
+    },
+    {
+      firstName : 'Tom6',
+      lastName : 'Cruise6',
+      role : 'Reader'
+    }
+  ];
 
   constructor() {
     setTimeout(
