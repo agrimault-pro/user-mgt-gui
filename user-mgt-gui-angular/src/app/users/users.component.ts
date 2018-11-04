@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  #Decorator
+  //Decorator
   @Input() userFirstName : String;
   @Input() userLastName : String;
   @Input() userRole : String;
