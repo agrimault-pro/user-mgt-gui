@@ -6,10 +6,10 @@
       <p>Update date: {{ lastUpdate | async | date: 'EEEE d MMMM y' | uppercase }}</p>
 
       <ul class="list-group">
-        <app-users *ngFor="let user of users"
+        <app-user *ngFor="let user of users"
                    [userFirstName]="user.firstName"
                    [userLastName]="user.lastName"
-                   [userRole]="user.role"></app-users>
+                   [userRole]="user.role"></app-user>
       </ul>
       <button class="btn btn-danger"
               (click)="onAllUsersAdmin()">All users are admins</button>
