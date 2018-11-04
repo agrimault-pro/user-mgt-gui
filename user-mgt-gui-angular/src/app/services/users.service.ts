@@ -32,5 +32,19 @@ export class UsersService {
       }
     ];
 
+  switchAllUsersToAdmin() {
+    for(let user of this.users) {
+      user.role = 'Admin'
+    }
+  }
 
+  switchAllUsersToReader() {
+    for(let user of this.users) {
+      user.role = 'Reader'
+    }
+  }
+
+  addUser() {
+    //TODO
+  }
 }

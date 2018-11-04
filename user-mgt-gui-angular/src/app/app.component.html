@@ -11,9 +11,10 @@
                    [userLastName]="user.lastName"
                    [userRole]="user.role"></app-users>
       </ul>
+      <button class="btn btn-danger"
+              (click)="onAllUsersAdmin()">All users are admins</button>
       <button class="btn btn-success"
-              [disabled]="!isAuth" 
-              (click)="onCreateUser()">Add a user</button>
+              (click)="onAllUsersReader()">All users are readers</button>
     </div>
   </div>
 </div>

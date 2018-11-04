@@ -36,4 +36,14 @@ export class AppComponent implements OnInit {
   onCreateUser() {
     console.log('User creation !');
   }
+
+  onAllUsersAdmin() {
+    console.log('onAllUsersAdmin !');
+    this.usersService.switchAllUsersToAdmin();
+  }
+
+  onAllUsersReader() {
+    console.log('onAllUsersReader !');
+    this.usersService.switchAllUsersToReader()
+  }
 }
