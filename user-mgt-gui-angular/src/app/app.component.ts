@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuth = false;
+  users: any[];
 
   lastUpdate = new Promise(
     (resolve, reject) => {
@@ -19,45 +21,16 @@ export class AppComponent {
     }
   );
 
-  users = [
-    {
-      firstName : 'Tom1',
-      lastName : 'Cruise1',
-      role : 'Reader'
-    },
-    {
-      firstName : 'Tom2',
-      lastName : 'Cruise2',
-      role : 'Reader'
-    },
-    {
-      firstName : 'Tom3',
-      lastName : 'Cruise3',
-      role : 'Admin'
-    },
-    {
-      firstName : 'Tom4',
-      lastName : 'Cruise4',
-      role : 'Reader'
-    },
-    {
-      firstName : 'Tom5',
-      lastName : 'Cruise5',
-      role : 'Admin'
-    },
-    {
-      firstName : 'Tom6',
-      lastName : 'Cruise6',
-      role : 'Reader'
-    }
-  ];
-
-  constructor() {
+  constructor(private usersService: UsersService) {
     setTimeout(
       () => {
         this.isAuth = true;
       }, 3000
     );
+  }
+
+  ngOnInit() {
+    this.users = this.usersService.users;
   }
 
   onCreateUser() {
