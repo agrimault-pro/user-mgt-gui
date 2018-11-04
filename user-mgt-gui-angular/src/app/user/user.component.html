@@ -1,8 +1,12 @@
 <li [ngClass]="{'list-group-item': true,
                 'list-group-item-danger':isUserAnAdmin(),
                 'list-group-item-success':!isUserAnAdmin()}">
-  <div style="width:20px; height:20px; background-color:red;"
-       *ngIf=isUserAnAdmin()></div>
   <h4 [ngStyle]="{color:getColorForAdmin()}">User first name: {{ userFirstName }} -- Last name: {{ getLastName() }} -- Role: {{ userRole }}</h4>
   <input type="text" class="form-control" [(ngModel)]="userFirstName">
+  <button class="btn btn-success"
+          (click)="onSwitchUserToReader()"
+          [disabled]="userRole === 'Reader'" >Switch to role Reader</button>
+  <button class="btn btn-danger"
+          (click)="onSwitchUserToAdmin()"
+          [disabled]="userRole === 'Admin'" >Switch to role Admin</button>
 </li>

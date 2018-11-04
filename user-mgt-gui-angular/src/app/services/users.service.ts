@@ -44,6 +44,14 @@ export class UsersService {
     }
   }
 
+  switchUserToAdmin(index :number) {
+    this.users[index].role='Admin';
+  }
+
+  switchUserToReader(index :number) {
+    this.users[index].role='Reader';
+  }
+
   addUser() {
     //TODO
   }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-user',
@@ -11,8 +12,9 @@ export class UserComponent implements OnInit {
   @Input() userFirstName : String;
   @Input() userLastName : String;
   @Input() userRole : String;
+  @Input() indexUser : number;
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
   }
@@ -32,4 +34,12 @@ export class UserComponent implements OnInit {
       return 'green';
     }
   }
+
+    onSwitchUserToAdmin() {
+      this.usersService.switchUserToAdmin(this.indexUser);
+    }
+
+    onSwitchUserToReader() {
+      this.usersService.switchUserToReader(this.indexUser);
+    }
 }
