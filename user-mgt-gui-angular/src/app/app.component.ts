@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from './services/users.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     }
   );
 
-  constructor(private usersService: UsersService) {
+  constructor(private userService: UserService) {
     setTimeout(
       () => {
         this.isAuth = true;
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.usersService.users;
+    this.users = this.userService.users;
   }
 
   onCreateUser() {
@@ -39,11 +39,11 @@ export class AppComponent implements OnInit {
 
   onAllUsersAdmin() {
     console.log('onAllUsersAdmin !');
-    this.usersService.switchAllUsersToAdmin();
+    this.userService.switchAllUsersToAdmin();
   }
 
   onAllUsersReader() {
     console.log('onAllUsersReader !');
-    this.usersService.switchAllUsersToReader()
+    this.userService.switchAllUsersToReader()
   }
 }

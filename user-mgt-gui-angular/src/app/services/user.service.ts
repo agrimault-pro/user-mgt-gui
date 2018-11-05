@@ -1,4 +1,4 @@
-export class UsersService {
+export class UserService {
   users = [
       {
         firstName : 'Tom1',
