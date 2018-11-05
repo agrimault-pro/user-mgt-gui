@@ -1,21 +1,5 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h2>List of users: </h2>
-
-      <p>Update date: {{ lastUpdate | async | date: 'EEEE d MMMM y' | uppercase }}</p>
-
-      <ul class="list-group">
-        <app-user *ngFor="let user of users; let i = index"
-                   [indexUser]="i"
-                   [userFirstName]="user.firstName"
-                   [userLastName]="user.lastName"
-                   [userRole]="user.role"></app-user>
-      </ul>
-      <button class="btn btn-danger"
-              (click)="onAllUsersAdmin()">All users are admins</button>
-      <button class="btn btn-success"
-              (click)="onAllUsersReader()">All users are readers</button>
-    </div>
+    <app-users-view></app-users-view>
   </div>
 </div>
