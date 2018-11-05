@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 
 import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
+
 import { AuthComponent } from './auth/auth.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    UserService
+    UserService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
