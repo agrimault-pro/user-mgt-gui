@@ -8,6 +8,13 @@ import { UserComponent } from './user/user.component';
 import { UserService } from './services/user.service';
 import { AuthComponent } from './auth/auth.component';
 import { UsersViewComponent } from './users-view/users-view.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'users', component: UsersViewComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: '', component: UsersViewComponent }
+];
 
 @NgModule({
   declarations: [
@@ -18,7 +25,8 @@ import { UsersViewComponent } from './users-view/users-view.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     UserService
