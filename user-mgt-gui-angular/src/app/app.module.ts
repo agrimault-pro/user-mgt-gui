@@ -11,9 +11,11 @@ import { AuthService } from './services/auth.service';
 import { AuthComponent } from './auth/auth.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { RouterModule, Routes } from '@angular/router';
+import { UserViewComponent } from './user-view/user-view.component';
 
 const appRoutes: Routes = [
   { path: 'users', component: UsersViewComponent },
+  { path: 'users/:id', component: UserViewComponent },
   { path: 'auth', component: AuthComponent },
   { path: '', component: UsersViewComponent }
 ];
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
     AppComponent,
     UserComponent,
     AuthComponent,
-    UsersViewComponent
+    UsersViewComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,

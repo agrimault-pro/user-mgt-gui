@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   @Input() userLastName : String;
   @Input() userRole : String;
   @Input() indexUser : number;
+  @Input() id : number;
 
   constructor(private userService: UserService) { }
 
