@@ -13,10 +13,11 @@ import { UsersViewComponent } from './users-view/users-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserViewComponent } from './user-view/user-view.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: 'users', component: UsersViewComponent },
-  { path: 'users/:id', component: UserViewComponent },
+  { path: 'users', canActivate: [AuthGuard], component: UsersViewComponent },
+  { path: 'users/:id', canActivate: [AuthGuard], component: UserViewComponent },
   { path: 'auth', component: AuthComponent },
   { path: '', component: UsersViewComponent },
   { path: 'not-found', component: FourOhFourComponent },
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     UserService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
