@@ -1,5 +1,10 @@
+import { Subject } from "rxjs/Subject";
+
 export class UserService {
-  users = [
+  
+  userSubject = new Subject<any[]>();
+  
+  private users = [
       {
         id: 1,
         firstName : 'Tom1',
@@ -38,6 +43,10 @@ export class UserService {
       }
     ];
 
+  emitUserSubject() {
+    this.userSubject.next(this.users.slice());
+  }
+
   getUserById(id: number) {
     const user = this.users.find(
       (userObject) => {
@@ -51,20 +60,24 @@ export class UserService {
     for(let user of this.users) {
       user.role = 'Admin'
     }
+    this.emitUserSubject();
   }
 
   switchAllUsersToReader() {
     for(let user of this.users) {
       user.role = 'Reader'
     }
+    this.emitUserSubject();
   }
 
   switchUserToAdmin(index :number) {
     this.users[index].role='Admin';
+    this.emitUserSubject();
   }
 
   switchUserToReader(index :number) {
     this.users[index].role='Reader';
+    this.emitUserSubject();
   }
 
   addUser() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-users-view',
@@ -7,8 +8,9 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./users-view.component.scss']
 })
 export class UsersViewComponent implements OnInit {
-isAuth = false;
+  isAuth = false;
   users: any[];
+  userSubscription: Subscription;
 
   lastUpdate = new Promise(
     (resolve, reject) => {
@@ -30,7 +32,12 @@ isAuth = false;
   }
 
   ngOnInit() {
-    this.users = this.userService.users;
+    this.userSubscription = this.userService.userSubject.subscribe(
+      (users: any[]) => {
+        this.users = users;
+      }
+    );
+    this.userService.emitUserSubject();
   }
 
   onCreateUser() {
