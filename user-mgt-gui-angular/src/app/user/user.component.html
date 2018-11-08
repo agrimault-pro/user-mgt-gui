@@ -8,8 +8,8 @@
         <button class="btn btn-danger"
                 (click)="onSwitchUserToAdmin()"
                 [disabled]="userRole === 'Admin'" >Switch to role Admin</button>        
+        <button [routerLink]="[id]" class="btn btn-primary">User details</button>
   </h4>
-  <a [routerLink]="[id]">User details</a>
 
   <input type="text" class="form-control" [(ngModel)]="userFirstName">
 </li>
