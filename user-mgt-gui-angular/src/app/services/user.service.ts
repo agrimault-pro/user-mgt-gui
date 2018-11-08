@@ -80,7 +80,20 @@ export class UserService {
     this.emitUserSubject();
   }
 
-  addUser() {
-    //TODO
+  addUser(firstName: string, lastName: string, role: string) {
+    const userObject = {
+      id: 0,
+      firstName: '',
+      lastName: '',
+      role: ''
+    };
+
+    userObject.firstName = firstName;
+    userObject.lastName = lastName;
+    userObject.role = role;
+    userObject.id = this.users[(this.users.length - 1)].id + 1;
+
+    this.users.push(userObject);
+    this.emitUserSubject();
   }
 }
