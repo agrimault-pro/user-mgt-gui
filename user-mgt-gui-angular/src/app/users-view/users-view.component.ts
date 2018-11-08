@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -7,7 +7,8 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './users-view.component.html',
   styleUrls: ['./users-view.component.scss']
 })
-export class UsersViewComponent implements OnInit {
+export class UsersViewComponent implements OnInit, OnDestroy {
+ 
   isAuth = false;
   users: any[];
   userSubscription: Subscription;
@@ -38,6 +39,10 @@ export class UsersViewComponent implements OnInit {
       }
     );
     this.userService.emitUserSubject();
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
   }
 
   onCreateUser() {
