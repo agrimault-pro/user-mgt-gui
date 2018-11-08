@@ -14,10 +14,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserViewComponent } from './user-view/user-view.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   { path: 'users', canActivate: [AuthGuard], component: UsersViewComponent },
   { path: 'users/:id', canActivate: [AuthGuard], component: UserViewComponent },
+  { path: 'edit-user', canActivate: [AuthGuard], component: EditUserComponent },
   { path: 'auth', component: AuthComponent },
   { path: '', component: UsersViewComponent },
   { path: 'not-found', component: FourOhFourComponent },
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     AuthComponent,
     UsersViewComponent,
     UserViewComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
