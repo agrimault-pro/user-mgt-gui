@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 })
 export class EditUserComponent implements OnInit {
 
-  defaultRole = 'Reader';
-
   constructor(private userService: UserService,
               private router: Router) { }
 
@@ -21,9 +19,8 @@ export class EditUserComponent implements OnInit {
   onSubmit(form: NgForm) {
     const firstName = form.value['firstName'];
     const lastName = form.value['lastName'];
-    const role = form.value['role'];
 
-    this.userService.addUser(firstName, lastName, role);
+    this.userService.addUser(firstName, lastName);
     this.router.navigate(['/users']);
   }
 }

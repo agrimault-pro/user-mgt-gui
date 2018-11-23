@@ -1,51 +1,41 @@
 import { Subject } from "rxjs/Subject";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpRequest, HttpHeaders, HttpEventType } from "@angular/common/http";
+import { User } from "../models/User.model";
 
+@Injectable()
 export class UserService {
   
-  userSubject = new Subject<any[]>();
+  userSubject = new Subject<User[]>();
+  users: User[] = [];
   
-  private users = [
-      {
-        id: 1,
-        firstName : 'Tom1',
-        lastName : 'Cruise1',
-        role : 'Reader'
-      },
-      {
-        id: 2,
-        firstName : 'Tom2',
-        lastName : 'Cruise2',
-        role : 'Reader'
-      },
-      {
-        id: 3,
-        firstName : 'Tom3',
-        lastName : 'Cruise3',
-        role : 'Admin'
-      },
-      {
-        id: 4,
-        firstName : 'Tom4',
-        lastName : 'Cruise4',
-        role : 'Reader'
-      },
-      {
-        id: 5,
-        firstName : 'Tom5',
-        lastName : 'Cruise5',
-        role : 'Admin'
-      },
-      {
-        id: 6,
-        firstName : 'Tom6',
-        lastName : 'Cruise6',
-        role : 'Reader'
-      }
-    ];
+  //http://localhost:9103/user-mgt-api/Users
+  apiUrl = 'http://localhost:9103';
+  entryPoint = 'user-mgt-api';
+  fullWsUrl = this.apiUrl + '/' + this.entryPoint + '/Users';
 
+  constructor(private httpClient: HttpClient) {}
+ 
   emitUserSubject() {
     this.userSubject.next(this.users.slice());
   }
+
+  getUsers() {
+    console.log('getUsers - before call of '+this.fullWsUrl);
+    this.httpClient
+      .get<any[]>(this.fullWsUrl+'?name=Username&Password=fHtu45#aQwwdu9_:45oP_ADCs')
+      .subscribe(
+        (response) => {
+          console.log('getUsers - We get the response from the server: '+ response);
+          this.users = response;
+          this.emitUserSubject();
+        },
+        (error) => {
+          console.log('Do not succeed to get Users list ! ' + error);
+        }
+      );
+  }
+
 
   getUserById(id: number) {
     const user = this.users.find(
@@ -58,39 +48,44 @@ export class UserService {
 
   switchAllUsersToAdmin() {
     for(let user of this.users) {
-      user.role = 'Admin'
+      //user.role = 'Admin'
     }
     this.emitUserSubject();
   }
 
   switchAllUsersToReader() {
     for(let user of this.users) {
-      user.role = 'Reader'
+      //user.role = 'Reader'
     }
     this.emitUserSubject();
   }
 
   switchUserToAdmin(index :number) {
-    this.users[index].role='Admin';
+    //this.users[index].role='Admin';
     this.emitUserSubject();
   }
 
   switchUserToReader(index :number) {
-    this.users[index].role='Reader';
+    //this.users[index].role='Reader';
     this.emitUserSubject();
   }
 
-  addUser(firstName: string, lastName: string, role: string) {
+  addUser(firstName: string, lastName: string) {
     const userObject = {
       id: 0,
+      alias: '',
       firstName: '',
       lastName: '',
-      role: ''
+      email: '',
+      phoneNumber: '',
+      birthDate: '',
+      gender: '',
+      avatar: '',
+      password: ''
     };
 
     userObject.firstName = firstName;
     userObject.lastName = lastName;
-    userObject.role = role;
     userObject.id = this.users[(this.users.length - 1)].id + 1;
 
     this.users.push(userObject);

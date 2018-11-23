@@ -38,6 +38,8 @@ export class UsersViewComponent implements OnInit, OnDestroy {
         this.users = users;
       }
     );
+    this.userService.getUsers();
+    console.log('The list of User is loaded: '+ this.users);
     this.userService.emitUserSubject();
   }
 

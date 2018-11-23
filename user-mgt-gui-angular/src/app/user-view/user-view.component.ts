@@ -9,8 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserViewComponent implements OnInit {
 
-  name: String = 'User';
-  role: String = 'Reader';
+  firstName: String = 'firstName';
+  lastName: String = 'lastName';
 
   constructor(private userService: UserService,
               private route: ActivatedRoute) { }
@@ -18,8 +18,8 @@ export class UserViewComponent implements OnInit {
   ngOnInit() {
      const id = this.route.snapshot.params["id"];
      //The + in front of id is a cast to number (id was a string before the cast)
-     this.name = this.userService.getUserById(+id).firstName;
-     this.role = this.userService.getUserById(+id).role;
+     this.firstName = this.userService.getUserById(+id).firstName;
+     this.lastName = this.userService.getUserById(+id).lastName;
   }
 
 }

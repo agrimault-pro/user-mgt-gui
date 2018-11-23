@@ -11,7 +11,7 @@ export class UserComponent implements OnInit {
   //Decorator
   @Input() userFirstName : String;
   @Input() userLastName : String;
-  @Input() userRole : String;
+  //@Input() userRole : String;
   @Input() indexUser : number;
   @Input() id : number;
 
@@ -25,15 +25,16 @@ export class UserComponent implements OnInit {
   }
 
   isUserAnAdmin() {
-    return this.userRole === 'Admin';
+    //return this.userRole === 'Admin';
+    return false;
   }
 
   getColorForAdmin() {
-    if(this.userRole === 'Admin') {
+/*    if(this.userRole === 'Admin') {
       return 'red';
     } else if (this.userRole === 'Reader') {
       return 'green';
-    }
+    }*/
   }
 
     onSwitchUserToAdmin() {
