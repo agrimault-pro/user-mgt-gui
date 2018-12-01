@@ -1,15 +1,15 @@
-<li [ngClass]="{'list-group-item': true,
-                'list-group-item-danger':isUserAnAdmin(),
-                'list-group-item-success':!isUserAnAdmin()}">
-  <h4 [ngStyle]="{color:getColorForAdmin()}">User first name: {{ userFirstName }} -- Last name: {{ getLastName() }}
-        <button class="btn btn-success"
-                (click)="onSwitchUserToReader()"
-                [disabled]="true" >Switch to role Reader</button>
-        <button class="btn btn-danger"
-                (click)="onSwitchUserToAdmin()"
-                [disabled]="true" >Switch to role Admin</button>        
-        <button [routerLink]="[id]" class="btn btn-primary">User details</button>
-  </h4>
 
-  <input type="text" class="form-control" [(ngModel)]="userFirstName">
+<li [routerLink]="[id]" [ngClass]="{'list-group-item': true,
+                                'list-group-item-dark':isUserAnAdmin(),
+                                'list-group-item-secondary':!isUserAnAdmin()}">
+        <h4 [ngStyle]="{color:getColorForAdmin()}">User first name: {{ userFirstName }} -- Last name: {{ getLastName() }}
+                <button class="btn btn-secondary"
+                        (click)="onSwitchUserToReader()"
+                        [disabled]="true" >Switch to role Reader</button>
+                <button class="btn btn-dark"
+                        (click)="onSwitchUserToAdmin()"
+                        [disabled]="true" >Switch to role Admin</button>        
+        </h4>
 </li>
+
+<!--<input type="text" class="form-control" [(ngModel)]="userFirstName">-->

@@ -23,7 +23,7 @@ export class UserService {
   getUsers() {
     console.log('getUsers - before call of '+this.fullWsUrl);
     this.httpClient
-      .get<any[]>(this.fullWsUrl+'?name=Username&Password=fHtu45#aQwwdu9_:45oP_ADCs')
+      .get<any[]>(this.fullWsUrl, this.getHttpOptions())
       .subscribe(
         (response) => {
           console.log('getUsers - We get the response from the server: '+ response);
@@ -36,6 +36,16 @@ export class UserService {
       );
   }
 
+  getHttpOptions() {
+      //name=Username
+      //Password=fHtu45#aQwwdu9_:45oP_ADCs'
+      //const token = localStorage.getItem('token');
+      const headers = {
+          'Content-Type':  'application/json',
+          'Authorization': "Basic " + btoa("user-mgt-alias:fHtu45#aQwwdu9_:45oP_ADCs")
+        }
+      return { withCredentials: true, headers: headers };
+  }
 
   getUserById(id: number) {
     const user = this.users.find(
