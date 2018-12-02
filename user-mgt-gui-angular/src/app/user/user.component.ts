@@ -11,6 +11,9 @@ export class UserComponent implements OnInit {
   //Decorator
   @Input() userFirstName : String;
   @Input() userLastName : String;
+  @Input() email : String;
+  @Input() phoneNumber : String;
+  @Input() birthDate: String;
   //@Input() userRole : String;
   @Input() indexUser : number;
   @Input() id : number;
@@ -24,6 +27,14 @@ export class UserComponent implements OnInit {
     return this.userLastName;
   }
 
+/*  getEmail() {
+    return this.email;
+  }
+
+  getBirthDate() {
+    return this.birthDate;
+  }
+*/
   isUserAnAdmin() {
     //return this.userRole === 'Admin';
     return false;
