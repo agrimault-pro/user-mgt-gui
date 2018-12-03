@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ModuleWithComponentFactories } from '@angular/core';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -25,6 +25,19 @@ export class UserComponent implements OnInit {
 
   getLastName() {
     return this.userLastName;
+  }
+
+  getBirthDate() {
+    //var dateInNumber = Date.parse(this.birthDate.toString());
+    //var date = new Date(dateInNumber);
+    var date = new Date(this.birthDate.toString());
+    
+    var d = (date.getUTCDay() < 10) ? "0"+date.getUTCDay():date.getUTCDay();  
+    var m = (date.getUTCMonth() < 10) ? "0"+date.getUTCMonth():date.getUTCMonth(); 
+    var y = date.getUTCFullYear(); 
+
+    //Must be this format: 2015-08-09
+    return y+"-"+m+"-"+d;
   }
 
 /*  getEmail() {

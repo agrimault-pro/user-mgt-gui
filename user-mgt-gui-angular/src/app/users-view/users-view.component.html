@@ -18,29 +18,28 @@
 </div>
 -->
 <div class="container">
-<h2>List of users: </h2>
-<p>Update date: {{ lastUpdate | async | date: 'EEEE d MMMM y' | uppercase }}</p>      
-<table class="table table-dark table-striped table-hover">
-        <thead>
-        <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-        <th>Phone number</th>
-        <th>Birth date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <app-user *ngFor="let user of users; let i = index"
-                [indexUser]="i"
-                [userFirstName]="user.firstName"
-                [userLastName]="user.lastName"
-                [email]="user.email"
-                [phoneNumber]="user.phoneNumber"
-                [birthDate]="user.birthDate"
-                [id]="user.id"
-                class=".table-dark .table-striped .table-hover">
-        </app-user>
-        </tbody>
-</table>
+        <h2>List of users: </h2>
+        <p>Update date: {{ lastUpdate | async | date: 'EEEE d MMMM y' | uppercase }}</p>      
+        <table class="table table-dark table-striped table-hover">
+                <thead>
+                <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Birth date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <app-user *ngFor="let user of users; let i = index"
+                        [indexUser]="i"
+                        [userFirstName]="user.firstName"
+                        [userLastName]="user.lastName"
+                        [email]="user.email"
+                        [phoneNumber]="user.phoneNumber"
+                        [birthDate]="user.birthDate"
+                        [id]="user.id">
+                </app-user>
+                </tbody>
+        </table>
 </div>
