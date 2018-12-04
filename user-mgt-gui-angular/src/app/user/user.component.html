@@ -15,7 +15,7 @@
 -->
 
 <!--<input type="text" class="form-control" [(ngModel)]="userFirstName">-->
-        <tr>
+        <tr [routerLink]="[id]">
                 <td>{{ userFirstName }}</td>
                 <td>{{ getLastName() }}</td>
                 <td>{{ email }}</td>
@@ -25,7 +25,4 @@
                 <td>
                 <input type="date" data-date="" data-date-format="YYYY-MM-DD" value="{{ getBirthDate() }}" readonly>
                 </td>
-                <!--<input type="date" data-date="" data-date-format="DD MMMM YYYY" value="2015-08-09">-->
-                <!--<date-input date="{{date}}" timezone="[[timezone]]"></date-input>-->
-                <!--<td><input type="date" name="birthDate">{{ birthDate }}</td>-->
         </tr>
