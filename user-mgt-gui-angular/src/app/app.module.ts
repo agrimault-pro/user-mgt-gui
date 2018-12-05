@@ -17,6 +17,8 @@ import { AuthGuard } from './services/auth-guard.service';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'users', canActivate: [AuthGuard], component: UsersViewComponent },
@@ -36,7 +38,9 @@ const appRoutes: Routes = [
     UsersViewComponent,
     UserViewComponent,
     FourOhFourComponent,
-    EditUserComponent
+    EditUserComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     HttpModule,

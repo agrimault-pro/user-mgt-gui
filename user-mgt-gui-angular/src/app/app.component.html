@@ -1,27 +1,13 @@
-<div class="card text-center">
-  <div class="card-header bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-      <div class="container">
-        <a class="navbar-brand" href="#">User Management</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="auth">Authentification</a></li>
-            <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="users">Users</a></li>
-            <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="edit-user">Edit user</a></li>
-          </ul>         
-        </div>
-      </div>
-    </nav>
-  </div>
-
-  <div class="card-body bg-light">
-    <div class="row">
-      <div class="container">
-        <router-outlet></router-outlet>
-      </div>
+<div class="page-wrapper">
+    <div class="sticky-header">
+        <app-header></app-header>
     </div>
-  </div>
-  <div class="p-4 card-footer text-muted bg-light">
-      Footer to implement
-  </div>
+    <div class="content-wrapper">
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
 </div>
