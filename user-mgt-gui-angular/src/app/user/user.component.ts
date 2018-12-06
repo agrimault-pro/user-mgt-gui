@@ -28,8 +28,6 @@ export class UserComponent implements OnInit {
   }
 
   getBirthDate() {
-    //var dateInNumber = Date.parse(this.birthDate.toString());
-    //var date = new Date(dateInNumber);
     var date = new Date(this.birthDate.toString());
     
     var d = (date.getUTCDay() < 10) ? "0"+date.getUTCDay():date.getUTCDay();  
