@@ -1,24 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
+import { AuthComponent } from './auth/auth.component';
+import { UsersViewComponent } from './users-view/users-view.component';
+import { UserViewComponent } from './user-view/user-view.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
+import { AuthGuard } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 
-import { AuthComponent } from './auth/auth.component';
-import { UsersViewComponent } from './users-view/users-view.component';
-import { RouterModule, Routes } from '@angular/router';
-import { UserViewComponent } from './user-view/user-view.component';
-import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
-import { AuthGuard } from './services/auth-guard.service';
-import { EditUserComponent } from './edit-user/edit-user.component';
-import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'users', canActivate: [AuthGuard], component: UsersViewComponent },
@@ -42,12 +44,17 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent
   ],
+  exports: [    
+    MatListModule
+  ],
   imports: [
     HttpModule,
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatListModule
   ],
   providers: [
     UserService,

@@ -17,29 +17,50 @@
           (click)="onAllUsersReader()">All users are readers</button>
 </div>
 -->
+
 <div class="container">
         <h2>List of users: </h2>
         <p>Update date: {{ lastUpdate | async | date: 'EEEE d MMMM y' | uppercase }}</p>      
+
         <table class="table table-dark table-striped table-hover">
                 <thead>
-                <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Phone number</th>
-                <th>Birth date</th>
-                </tr>
+                        <tr>
+                                <th scope="col">Firstname</th>
+                                <th scope="col">Lastname</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone number</th>
+                                <th scope="col">Birth date</th>
+                        </tr>
                 </thead>
                 <tbody>
-                <app-user *ngFor="let user of users; let i = index"
-                        [indexUser]="i"
-                        [userFirstName]="user.firstName"
-                        [userLastName]="user.lastName"
-                        [email]="user.email"
-                        [phoneNumber]="user.phoneNumber"
-                        [birthDate]="user.birthDate"
-                        [id]="user.id">
-                </app-user>
+                        <mat-selection-list #usersId>
+                                <mat-list-option *ngFor="let user of users"><!-- ; let i = index-->
+
+                                        <app-user [userFirstName]="user.firstName"
+                                                [userLastName]="user.lastName"
+                                                [email]="user.email"
+                                                [phoneNumber]="user.phoneNumber"
+                                                [birthDate]="user.birthDate"
+                                                [indexUser]="i"
+                                                [id]="user.id">
+                                        </app-user>
+                                        
+                                </mat-list-option>
+                        </mat-selection-list>
+
+  <!--                      <app-user *ngFor="let user of users; let i = index"                              
+                                [userFirstName]="user.firstName"
+                                [userLastName]="user.lastName"
+                                [email]="user.email"
+                                [phoneNumber]="user.phoneNumber"
+                                [birthDate]="user.birthDate"
+                                [indexUser]="i"
+                                [id]="user.id">
+                        </app-user>-->
                 </tbody>
         </table>
+
+        <p>
+                Options selected: {{usersId.selectedOptions.selected.length}}
+        </p>
 </div>
