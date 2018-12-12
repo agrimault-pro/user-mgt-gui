@@ -1,6 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, NgModule } from '@angular/core';
+import { MatPaginator, MatTableDataSource, MatTableModule, MatPaginatorModule } from '@angular/material';
+
 import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs/Subscription';
+import { User } from '../models/User.model';
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'}
+];
 
 @Component({
   selector: 'app-users-view',
@@ -10,8 +25,19 @@ import { Subscription } from 'rxjs/Subscription';
 export class UsersViewComponent implements OnInit, OnDestroy {
  
   isAuth = false;
-  users: any[];
+  users: User[];
   userSubscription: Subscription;
+
+ // displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'birthDate'];
+ // dataSource = new MatTableDataSource<User>(this.users);
+
+ displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+ dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
+
 
   lastUpdate = new Promise(
     (resolve, reject) => {
@@ -41,6 +67,8 @@ export class UsersViewComponent implements OnInit, OnDestroy {
     this.userService.getUsers();
     console.log('The list of User is loaded: '+ this.users);
     this.userService.emitUserSubject();
+
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnDestroy() {

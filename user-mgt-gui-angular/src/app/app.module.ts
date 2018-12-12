@@ -6,6 +6,8 @@ import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -54,7 +56,9 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     UserService,
