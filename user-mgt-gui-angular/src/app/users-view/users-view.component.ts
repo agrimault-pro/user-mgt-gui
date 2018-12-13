@@ -14,7 +14,10 @@ export interface PeriodicElement {
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'}
+  { position: 2, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
+  { position: 3, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+  { position: 4, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
+  {position: 5, name: 'Helium', weight: 4.0026, symbol: 'He'}
 ];
 
 @Component({
@@ -28,8 +31,8 @@ export class UsersViewComponent implements OnInit, OnDestroy {
   users: User[];
   userSubscription: Subscription;
 
- // displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'birthDate'];
- // dataSource = new MatTableDataSource<User>(this.users);
+  displayedUserColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'birthDate'];
+  userDataSource = new MatTableDataSource<User>(this.users);
 
  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
@@ -74,6 +77,12 @@ export class UsersViewComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
   }
+
+  searchElements(search: string = "") {
+    console.log(search);
+    this.dataSource.filter = search.toLowerCase().trim();
+  }
+
 
   onCreateUser() {
     console.log('User creation !');

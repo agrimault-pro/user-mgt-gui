@@ -23,6 +23,10 @@
         <p>Update date: {{ lastUpdate | async | date: 'EEEE d MMMM y' | uppercase }}</p>      
 
         <div class="mat-elevation-z8">
+                <mat-form-field>
+                        <input placeholder="Search elements" matInput #input (keyup)='searchElements(input.value)'>
+                </mat-form-field>
+
                 <table mat-table [dataSource]="dataSource">
                 
                         <!-- Position Column -->
