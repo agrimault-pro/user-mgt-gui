@@ -5,28 +5,13 @@ import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs/Subscription';
 import { User } from '../models/User.model';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  { position: 2, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 3, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 4, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  {position: 5, name: 'Helium', weight: 4.0026, symbol: 'He'}
-];
-
 @Component({
   selector: 'app-users-view',
   templateUrl: './users-view.component.html',
   styleUrls: ['./users-view.component.scss']
 })
 export class UsersViewComponent implements OnInit, OnDestroy {
- 
+
   isAuth = false;
   users: User[];
   userSubscription: Subscription;
@@ -34,13 +19,9 @@ export class UsersViewComponent implements OnInit, OnDestroy {
   displayedUserColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'birthDate'];
   userDataSource = new MatTableDataSource<User>(this.users);
 
- displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
- dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
-
-
+  @ViewChild(MatPaginator) userPaginator: MatPaginator;
 
   lastUpdate = new Promise(
     (resolve, reject) => {
@@ -62,16 +43,21 @@ export class UsersViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.userSubscription = this.userService.userSubject.subscribe(
-      (users: any[]) => {
-        this.users = users;
-      }
-    );
+    this.refresh();
+
     this.userService.getUsers();
     console.log('The list of User is loaded: '+ this.users);
     this.userService.emitUserSubject();
 
-    this.dataSource.paginator = this.paginator;
+    this.userDataSource.paginator = this.userPaginator;
+  }
+
+  refresh() {
+    this.userSubscription = this.userService.userSubject.subscribe(
+      (users: User[]) => {
+        this.userDataSource.data = users;      
+      }
+    );
   }
 
   ngOnDestroy() {
@@ -80,7 +66,7 @@ export class UsersViewComponent implements OnInit, OnDestroy {
 
   searchElements(search: string = "") {
     console.log(search);
-    this.dataSource.filter = search.toLowerCase().trim();
+    this.userDataSource.filter = search.toLowerCase().trim();
   }
 
 
