@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -61,7 +63,9 @@ const appRoutes: Routes = [
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [
     UserService,

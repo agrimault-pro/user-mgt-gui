@@ -1,3 +1,4 @@
+<!--
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #596368;">
   <div class="container">
     <a class="navbar-brand" href="#">User Management</a>
@@ -10,3 +11,16 @@
     </div>
   </div>
 </nav>
+-->
+
+<mat-toolbar color="primary">
+  <span>
+    <i class="material-icons">account_circle</i>
+    User management tool
+  </span>
+  <span class="fill-remaining-space"></span>
+  <button mat-button>Menu Option 01</button>
+  <button mat-button>Menu Option 02</button>
+  <button mat-button routerLink="login">Login</button>
+  <button mat-button (click)="onLogout()">Logout</button>
+</mat-toolbar>
