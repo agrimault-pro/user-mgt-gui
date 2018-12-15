@@ -10,7 +10,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
 import { AuthComponent } from './auth/auth.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { UserViewComponent } from './user-view/user-view.component';
@@ -37,7 +36,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
     AuthComponent,
     UsersViewComponent,
     UserViewComponent,

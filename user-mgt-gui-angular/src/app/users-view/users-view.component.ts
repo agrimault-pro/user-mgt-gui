@@ -42,6 +42,16 @@ export class UsersViewComponent implements OnInit, OnDestroy {
     );
   }
 
+/*  getBirthDate() {
+    var date = new Date(this.birthDate.toString());
+    
+    var d = (date.getUTCDay() < 10) ? "0"+date.getUTCDay():date.getUTCDay();  
+    var m = (date.getUTCMonth() < 10) ? "0"+date.getUTCMonth():date.getUTCMonth(); 
+    var y = date.getUTCFullYear(); 
+
+    return y+"-"+m+"-"+d;
+  }*/
+
   ngOnInit() {
     this.refresh();
 
