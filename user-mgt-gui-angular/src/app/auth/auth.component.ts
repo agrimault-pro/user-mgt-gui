@@ -38,6 +38,11 @@ export class AuthComponent implements OnInit {
     )
   }
 
+  onSignOut() {
+    this.authService.signOut();
+    this.authStatus = this.authService.isAuth;
+  }
+
   isFieldInvalid(field: string) { // {6}
     return (
       (!this.form.get(field).valid && this.form.get(field).touched) ||
