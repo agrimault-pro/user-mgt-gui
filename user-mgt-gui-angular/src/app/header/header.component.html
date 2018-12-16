@@ -18,9 +18,12 @@
     <mat-icon>account_circle</mat-icon>
     User management tool
   </span>
-  <button mat-button routerLink="users">Users</button>
-  <button mat-button routerLink="edit-user">User creation</button>
+
+  <span class="container">
+    <button routerLinkActive="mat-flat-button" mat-button routerLink="users">Users</button>
+    <button routerLinkActive="mat-flat-button" mat-button routerLink="edit-user">User creation</button>
+  </span>
 
   <span class="fill-remaining-space"></span>
-  <button mat-button routerLink="auth">Logout</button>
+  <button routerLinkActive="mat-flat-button" mat-button routerLink="auth" (click)="onSignOut()">Logout</button>
 </mat-toolbar>
