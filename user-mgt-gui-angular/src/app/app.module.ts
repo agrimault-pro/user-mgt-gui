@@ -11,6 +11,7 @@ import { MatPaginatorModule, MatInputModule, MatFormFieldModule } from '@angular
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatCardModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     UserService,

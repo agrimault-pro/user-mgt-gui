@@ -15,12 +15,12 @@
 
 <mat-toolbar color="primary">
   <span>
-    <i class="material-icons">account_circle</i>
+    <mat-icon>account_circle</mat-icon>
     User management tool
   </span>
+  <button mat-button routerLink="users">Users</button>
+  <button mat-button routerLink="edit-user">User creation</button>
+
   <span class="fill-remaining-space"></span>
-  <button mat-button>Menu Option 01</button>
-  <button mat-button>Menu Option 02</button>
-  <button mat-button routerLink="login">Login</button>
-  <button mat-button (click)="onLogout()">Logout</button>
+  <button mat-button routerLink="auth">Logout</button>
 </mat-toolbar>
