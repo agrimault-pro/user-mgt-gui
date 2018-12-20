@@ -81,6 +81,11 @@ export class UserService {
   }
 
   addUser(firstName: string, lastName: string) {
+    const role = {
+      id: 0,
+      roleName:'READER'
+    }
+
     const userObject = {
       id: 0,
       alias: '',
@@ -91,7 +96,8 @@ export class UserService {
       birthDate: '',
       gender: '',
       avatar: '',
-      password: ''
+      password: '',
+      role: role
     };
 
     userObject.firstName = firstName;

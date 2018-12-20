@@ -1,3 +1,5 @@
+import { Role } from "./Role.model";
+
 export class User {  
     constructor(public id: number,
                 public alias: string,
@@ -9,5 +11,6 @@ export class User {
                 public gender: string,
                 public avatar: string,
                 public password: string,
+                public role: Role
                 ) {}
 }
