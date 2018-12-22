@@ -1,7 +1,7 @@
 import { Subject } from "rxjs/Subject";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpRequest, HttpHeaders, HttpEventType } from "@angular/common/http";
-import { User } from "../models/User.model";
+import { User } from "../_models/User.model";
 
 @Injectable()
 export class UserService {

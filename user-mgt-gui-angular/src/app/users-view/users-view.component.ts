@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild, NgModule } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatTableModule, MatPaginatorModule } from '@angular/material';
 
-import { UserService } from '../services/user.service';
+import { UserService } from '../_services/user.service';
 import { Subscription } from 'rxjs/Subscription';
-import { User } from '../models/User.model';
+import { User } from '../_models/User.model';
 
 @Component({
   selector: 'app-users-view',

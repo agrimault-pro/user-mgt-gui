@@ -11,6 +11,7 @@ export class User {
                 public gender: string,
                 public avatar: string,
                 public password: string,
-                public role: Role
+                public role: Role//,
+               // token?: string
                 ) {}
 }

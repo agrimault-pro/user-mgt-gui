@@ -1,4 +1,4 @@
-import { User } from "../models/User.model";
+import { User } from "../_models/User.model";
 import { BehaviorSubject } from "rxjs";
 import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";

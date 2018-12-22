@@ -17,14 +17,14 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { UserViewComponent } from './user-view/user-view.component';
-import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { FourOhFourComponent } from './_four-oh-four/four-oh-four.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
-import { AuthGuard } from './services/auth-guard.service';
-import { UserService } from './services/user.service';
-import { AuthService } from './services/auth.service';
+import { AuthGuard } from './_services/auth-guard.service';
+import { UserService } from './_services/user.service';
+import { AuthService } from './_services/auth.service';
 
 
 const appRoutes: Routes = [
